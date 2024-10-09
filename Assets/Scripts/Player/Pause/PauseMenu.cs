@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class pause : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenu;
-    public bool isPaused;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private bool isPaused;
     
     // Start is called before the first frame update
     void Start()

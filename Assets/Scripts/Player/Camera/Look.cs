@@ -16,7 +16,7 @@ public class Look : MonoBehaviour
     public Vector2 camLimits;
 
     //Pause Menu
-    public pause PauseMenu;
+    public PauseMenu PauseMenu;
     public bool isPaused;
     public GameObject pauseMenu;
 
