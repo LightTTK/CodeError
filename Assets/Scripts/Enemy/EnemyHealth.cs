@@ -9,12 +9,12 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public TextMeshProUGUI healthNumber;
+    [SerializeField] private GameObject Perk_Drop;
+    [SerializeField] private GameObject Visual;  
+    [SerializeField] private GameObject Visual2;  
 
     //UI
     public Slider slider;
-
-    //BillBoard
-    public Transform cam;
 
     public Health e_health;
     public MCHealthbar damage;
@@ -32,18 +32,17 @@ public class EnemyHealth : MonoBehaviour
 
     }
 
-    void LateUpdate()
-    {
-        transform.LookAt(transform.position + cam.forward);
-    }
-
     public void DamageTaken(int damage)
     {
         currentHealth -= damage;
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Visual.SetActive(false);
+            Visual2.SetActive(false);
+            
+            Perk_Drop.SetActive(true);
+
         }
     }
 }

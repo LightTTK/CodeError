@@ -26,7 +26,9 @@ public class Enemy : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
     }
-    void Start() {
+    void Start() 
+    {
+        anim = GetComponentInChildren<Animator>();
 
     }
 
@@ -43,15 +45,13 @@ public class Enemy : MonoBehaviour
            Attack();
         }
 
-        // anim.SetFloat("x", 0.14f, Time.deltaTime);
-        // anim.SetFloat("y", 0.14f, Time.deltaTime);
-
     }
 
     void Patrol() {
         // TODO PlaceHolder
         agent.SetDestination(transform.position);
         if(!CanPatrol) StartCoroutine (PatrolThenWait ());
+        anim.SetBool("Chasing", false);
     }
     IEnumerator PatrolThenWait () {
         GameObject currentPath = myPathHolder.GetPaths() [0];
@@ -89,6 +89,7 @@ public class Enemy : MonoBehaviour
         CanPatrol = false;
 
         agent.isStopped = false;
+        anim.SetBool("Chasing", true);
      
     }
 
@@ -110,6 +111,11 @@ public class Enemy : MonoBehaviour
 
          Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, ChaseDistance);
+    }
+
+        public void ToggleAnimation(bool _enabled)
+    {
+        
     }
 }
 // Patrolling
